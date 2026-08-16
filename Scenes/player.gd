@@ -1,4 +1,6 @@
 extends Area2D
+signal exploded(item)
+
 var inputs = {"ui_right": Vector2.RIGHT,
 			"ui_left": Vector2.LEFT,
 			"ui_up": Vector2.UP,
@@ -27,5 +29,14 @@ func get_score():
 	return score
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
+#func picked_up_something(obj):
+	#self.inventory.append(obj)
+	
+func pick_up(item):
+	for rock in inventory:
+		if rock.score == item.score:
+			exploded.emit(item)
+	self.inventory.append(item)

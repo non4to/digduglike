@@ -94,3 +94,5 @@ offset_top = 2.0
 offset_right = 126.0
 offset_bottom = 25.0
 horizontal_alignment = 2
+
+[connection signal="exploded" from="Player" to="." method="_on_player_exploded"]
