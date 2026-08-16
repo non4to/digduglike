@@ -23,6 +23,8 @@ Global="*uid://bk5i6meksrnb5"
 
 window/size/viewport_width=128
 window/size/viewport_height=256
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [physics]
 
