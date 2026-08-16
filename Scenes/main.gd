@@ -1,11 +1,18 @@
 extends Node2D
 var Rock = preload("res://Scenes/rock.tscn")
 
+# todo load from a json
+# todo add property for which sprite to load
+var rock_data: Dictionary = {"id0":{"position":{"x":1, "y":1},  "value":10},
+							 "id1":{"position":{"x":1, "y":0},  "value":15},
+							 "id2":{"position":{"x":7, "y":15}, "value":10},
+							 "id3":{"position":{"x":5, "y":5},  "value":1},
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_rock(Vector2(1,1), 10)
-	add_rock(Vector2(1,0), 15)
-	add_rock(Vector2(7,15), 10)
+	for id in rock_data.keys():
+		add_rock(Vector2(rock_data[id]["position"]["x"], rock_data[id]["position"]["y"]), rock_data[id]["value"])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -17,9 +24,9 @@ func _draw():
 	for y in range(0, 640, Global.tileSize):
 		draw_line(Vector2(0, y), Vector2(1152, y), Color8(0, 0, 0), 2)
 
-func add_rock(startPos, score):	
+func add_rock(position, score):	
 	var rock = Rock.instantiate()
-	rock.init(startPos, score)
+	rock.init(position, score)
 	rock.picked_up.connect(%Player.pick_up)
 	add_child(rock)
 
