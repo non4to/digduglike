@@ -5,10 +5,10 @@ var Rock = preload("res://Scenes/rock.tscn")
 func _ready() -> void:
 	add_rock(Vector2(1,1), 10)
 	add_rock(Vector2(1,0), 15)
-	add_rock(Vector2(7,15), 25)
+	add_rock(Vector2(7,15), 10)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	%playerscore.text = str(%Player.get_score())
 	
 func _draw():
@@ -20,4 +20,10 @@ func _draw():
 func add_rock(startPos, score):	
 	var rock = Rock.instantiate()
 	rock.init(startPos, score)
+	rock.picked_up.connect(%Player.pick_up)
 	add_child(rock)
+
+
+func _on_player_exploded(item) -> void:
+	print("game over")
+	print(item)
