@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcj1fjf6n175a"]
+
+[ext_resource type="Script" uid="uid://cqctv2tqkug78" path="res://Scenes/UI/start_screen.gd" id="1_iwgee"]
+
+[node name="startScreen" type="Node2D" unique_id=2103533224]
+script = ExtResource("1_iwgee")
+
+[node name="GameName" type="Label" parent="." unique_id=960927647]
+unique_name_in_owner = true
+offset_top = 21.0
+offset_right = 128.0
+offset_bottom = 44.0
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1454903448]
+offset_right = 40.0
+offset_bottom = 23.0
