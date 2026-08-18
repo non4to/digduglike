@@ -19,7 +19,7 @@ func _draw():
 
 func add_rock(startPos, score):	
 	var rock = Rock.instantiate()
-	rock.init(startPos, score)
+	rock.init(startPos, score, Global.tileSize)
 	rock.picked_up.connect(%Player.pick_up)
 	add_child(rock)
 
