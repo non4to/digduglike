@@ -37,7 +37,7 @@ func _draw():
 
 func add_rock(position, score):	
 	var rock = Rock.instantiate()
-	rock.init(position, score)
+	rock.init(startPos, score, Global.tileSize)
 	rock.picked_up.connect(%Player.pick_up)
 	rock.picked_up.connect(self.compass.remove_target) # hmm not sure I like this here
 	add_child(rock)
